@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import Card from './Card';
+import JSONDATA from './data.json';
+import { useState } from 'react';
 
 let data = [
   {title: "Some fancy product", description: "Soo good asd", price: 70, review: "Good", reviewer: "John", discount: false, recommended: true},
@@ -11,9 +13,13 @@ let data = [
 ]
 
 function App() {
+   const [searchTerm, setSearchTerm] = useState('')
   return (
     <div className="App">
-      <h1>Webshop</h1>
+      <div className={"navbar"}>
+        <h1>Webshop</h1>
+        <input type="text" placeholder={"Search for products"} onChange={event => {setSearchTerm(event.target.value)}}/>
+      </div>
       <div className={"cardholder"}>
         {data.map(card => 
       <Card card={card}/>
