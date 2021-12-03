@@ -21,7 +21,13 @@ function App() {
         <input type="text" placeholder={"Search for products"} onChange={event => {setSearchTerm(event.target.value)}}/>
       </div>
       <div className={"cardholder"}>
-        {data.map(card => 
+        {data.filter((val) => {
+          if (searchTerm == "") {
+            return val
+          } else if (val.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())){
+            return val
+          }
+        }).map(card => 
       <Card card={card}/>
         )}
       </div>
