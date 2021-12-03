@@ -15,11 +15,11 @@ function App() {
         <input type="text" placeholder={"Search for products"} onChange={event => {setSearchTerm(event.target.value)}}/>
       </div>
       <div className={"cardholder"}>
-        {data.filter((val) => {
-          if (searchTerm == "") {
+        {data.filter(function(val, array) {
+          if (searchTerm == "" || val.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) {
             return val
-          } else if (val.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())){
-            return val
+          } else {
+            console.log("error");
           }
         }).map(card => 
       <Card card={card}/>
